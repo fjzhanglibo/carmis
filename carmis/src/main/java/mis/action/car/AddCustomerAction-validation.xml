@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE validators PUBLIC 
+	"-//Apache Struts//XWork Validator 1.0.3//EN"
+	"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="customerBean.customerName">
+		<field-validator type="requiredstring">
+			<message>姓名必填！</message>
+		</field-validator>
+		
+	</field>
+	<field name="customerBean.customerTel">
+		<field-validator type="requiredstring">
+			<message>电话号码必填！</message>
+		</field-validator>
+		
+	</field>
+	<field name="customerBean.customerIdCard">
+		<field-validator type="requiredstring">
+			<message>身份证号码必填！</message>
+		</field-validator>
+	</field>
+</validators>

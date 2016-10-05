@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE validators PUBLIC 
+	"-//Apache Struts//XWork Validator 1.0.3//EN"
+	"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="service.serviceNumber">
+		<field-validator type="requiredstring">
+			<message>服务名称必填！</message>
+		</field-validator>
+		
+	</field>
+	<field name="service.serviceNumber">
+		<field-validator type="requiredstring">
+			<message>服务编号必填！</message>
+		</field-validator>
+		
+	</field>
+	<field name="service.serviceUnit">
+		<field-validator type="requiredstring">
+			<message>单位必填！</message>
+		</field-validator>
+	</field>
+	<field name="service.servicePrice">
+		<field-validator type="required">
+			<message>单价必填！</message>
+		</field-validator>
+	</field>
+</validators>

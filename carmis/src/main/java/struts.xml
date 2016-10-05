@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Struts2配置文件的DTD信息 -->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- Struts2配置文件的根元素 -->
+<struts>
+	<!-- 配置了系列常量 -->
+	<constant name="struts.custom.i18n.resources" value="resource"/>
+	<constant name="struts.i18n.encoding" value="GB2312"/>
+	<constant name="struts.devMode" value="true"/>
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.ui.templateDir" value="template" />
+    <constant name="struts.ui.templateSuffix" value="ftl" />
+        
+    
+	<package name="default" extends="struts-default">
+	
+	<!-- <interceptors>  
+        <interceptor-stack name="storeStack">  
+            <interceptor-ref name="store">  
+                <param name="operationMode">AUTOMATIC</param>  
+            </interceptor-ref>  
+            <interceptor-ref name="paramsPrepareParamsStack" />  
+        </interceptor-stack>  
+    </interceptors>         
+    <default-interceptor-ref name="storeStack" />  -->
+
+
+		
+<!--============================下面是员工角色的Action========================-->
+		<action name="welcome">
+		<result>welcome.jsp</result>
+		</action>
+
+		<!-- 定义处理登录系统的的Action -->
+		<action name="processLogin"
+			class="mis.action.LoginAction">
+			<result name="input">sign-in.jsp</result>
+			<result>welcome.jsp</result>
+			<result name="error">sign-in.jsp</result>
+		</action>
+		
+		<!-- 定义处理登出请求的Action -->
+		<action name="logout" 
+			class="mis.action.LogoutAction">
+			<result>sign-in.jsp</result>
+		</action>
+		
+		<!-- 定义显示账户管理的Action -->
+		<action name="users" 
+			class="mis.action.UsersAction">
+			<result>/content/system/users.jsp</result>
+		</action>
+		<!-- 定义显示系统概况的Action -->
+		<action name="systemMain" 
+			class="mis.action.SystemMainAction">
+			<result>main.jsp</result>
+		</action>
+		
+		<!-- 定义显示要变更账户的Action -->
+		<action name="showChangeUser" 
+			class="mis.action.ShowChangeUserAction">
+			<result>/content/system/changeUser.jsp</result>
+			<result name="input">/content/system/users.jsp</result>
+		</action>
+		<!-- 定义变更账户的Action -->
+		<action name="changeUser" 
+			class="mis.action.ChangeUserAction">
+			<result>/content/system/users.jsp</result>
+			<result name="input">/content/system/changeError.jsp</result>
+		</action>
+		<!-- 定义刪除账户的Action -->
+		<action name="delUser" 
+			class="mis.action.DelUserAction">
+			<result>/content/system/users.jsp</result>
+			<result name="error">/content/system/users.jsp</result>
+			<result name="input">/content/system/changeUser.jsp</result>
+		</action>
+		<!-- 定义显示添加账户的Action -->
+		<action name="showAddUser"
+			class="mis.action.ShowChangeUserAction" >
+			<result>/content/system/addUser.jsp</result>			
+		</action>
+		<!-- 定义添加账户的Action -->
+		<action name="addUser"
+			class="mis.action.AddUserAction" >
+			<result>/content/system/users.jsp</result>	
+			<result name="input">
+			/content/system/addError.jsp
+			</result>		
+		</action>
+<!-- ===========================Department======================================================== -->
+		<!-- 显示部门的Action -->
+		<action name="departments"
+			class="mis.action.DepartmentsAction" >
+			<result>/content/system/department/departments.jsp</result>			
+		</action>
+		<!-- 显示变更部门的Action -->
+		<action name="showChangeDepartment"
+			class="mis.action.ShowChangeDepartmentAction" >
+			<result>/content/system/department/changeDepartment.jsp</result>			
+		</action>
+		<!-- 显示变更部门的Action -->
+		<action name="changeDepartment"
+			class="mis.action.ChangeDepartmentAction" >
+			<result>/content/system/department/departments.jsp</result>	
+			<result name="input">/content/system/department/changeError.jsp</result>			
+		</action>
+		<!-- 删除部门的Action -->
+		<action name="delDepartment"
+			class="mis.action.DelDepartmentAction" >
+			<result>/content/system/department/departments.jsp</result>			
+		</action>
+		<!-- 显示添加部门的Action -->
+		<action name="showAddDepartment"
+			class="mis.action.ShowChangeDepartmentAction" >
+			<result>/content/system/department/addDepartment.jsp</result>			
+		</action>
+		<!-- 定义添加部门的Action -->
+		<action name="addDepartment"
+			class="mis.action.AddDepartmentAction" >
+			<result>/content/system/department/departments.jsp</result>	
+			<result name="input">/content/system/department/addError.jsp</result>		
+		</action>
+		<!-- 定义显示部门人员的Action -->
+		<action name="depUsers"
+			class="mis.action.DepUsersAction" >
+			<result>/content/system/department/depUsers.jsp</result>			
+		</action>
+		
+<!-- ===========================Part======================================================== -->
+		<!-- 显示角色的Action -->
+		<action name="parts"
+			class="mis.action.part.PartsAction" >
+			<result>/content/system/part/parts.jsp</result>			
+		</action>
+		<!-- 显示变更角色的Action -->
+		<action name="showChangePart"
+			class="mis.action.part.ShowChangePartAction" >
+			<result>/content/system/part/changePart.jsp</result>			
+		</action>
+		<!-- 显示变更角色属性的Action -->
+		<action name="changePartRights"
+			class="mis.action.part.ChangePartRightsAction" >
+			<result>/content/system/part/parts.jsp</result>			
+		</action>
+		<!-- 显示添加角色的Action -->
+		<action name="showAddPart" >
+			<result>/content/system/part/addPart.jsp</result>			
+		</action>
+		<!-- 定义添加角色的Action -->
+		<action name="addPart"
+			class="mis.action.part.AddPartAction" >
+			<result>/content/system/part/parts.jsp</result>			
+		</action>
+<!-- ===========================Rights======================================================== -->
+		<!-- 显示权限的Action -->
+		<action name="rights"
+			class="mis.action.rights.RightsAction" >
+			<result>/content/system/rights/rights.jsp</result>			
+		</action>	
+<!-- ===========================Account======================================================== -->
+		<action name="showChangeAccount"
+			class="mis.action.account.ShowChangeAccountAction" >
+			<result>/content/system/account/changeAccount.jsp</result>			
+		</action>
+		
+		<action name="changeAccount"
+			class="mis.action.account.ChangeUserAction" >
+			<result type="redirect">welcome.jsp</result>
+			<result name="input">/content/system/account/changeError.jsp</result>			
+		</action>
+		
+<!-- ===========================Car======================================================== -->
+		<action name="cars"
+			class="mis.action.car.CarsAction">
+			<result>/content/car/cars.jsp</result>
+			<result name="checkout">/content/checkout/cars.jsp</result>
+		</action>	
+		<action name="carExpenses"
+			class="mis.action.car.CarExpensesAction">
+			<result>/content/car/carExpenses.jsp</result>
+		</action>
+		<action name="showChangeCar"
+			class="mis.action.car.ShowChangeCarAction">
+			<result>/content/car/changeCar.jsp</result>
+			<result name="add">/content/car/addCar.jsp</result>
+		</action>	
+		<action name="changeCar"
+			class="mis.action.car.ChangeCarAction">
+			<result>/content/car/cars.jsp</result>
+			
+		</action>
+		<action name="addCar"
+			class="mis.action.car.AddCarAction">
+			<result>/content/car/addCar.jsp</result>
+			<result name="input">/content/car/addCarError.jsp</result>
+		</action>  
+
+<!-- ===========================Checkout======================================================== -->
+		<action name="showCheckout"
+			class="mis.action.checkout.ShowCheckoutAction">
+			<result>/content/checkout/checkout.jsp</result>
+		</action>
+		<action name="checkout"
+			class="mis.action.checkout.CheckoutAction">
+			<result>/content/checkout/checkouted.jsp</result>
+		</action>
+		
+	<!-- ===========================customer======================================================== -->	
+		<action name="addCustomer"
+			class="mis.action.car.AddCustomerAction">
+			<result type="redirect">welcome.jsp</result>
+			<result name="checkout" type="chain">showCheckout</result>
+			<result name="input">/content/car/addCustomerError.jsp</result>
+		</action>
+		<action name="customers"
+			class="mis.action.customer.CustomersAction">
+			<result>/content/customer/customers.jsp</result>
+		</action>
+		<action name="showChangeCustomer"
+			class="mis.action.customer.ShowChangeCustomerAction">
+			<result>/content/customer/changeCustomer.jsp</result>
+		</action>	
+		<action name="changeCustomer"
+			class="mis.action.customer.ChangeCustomerAction">
+			<result>/content/customer/customers.jsp</result>
+			<result name="input">/content/customer/changeError.jsp</result>
+		</action>
+
+
+	<!-- ===========================rank======================================================== -->	
+		<action name="ranks"
+			class="mis.action.rank.RanksAction">
+			<result>/content/rank/ranks.jsp</result>
+		</action>	
+		<action name="showChangeRank"
+			class="mis.action.rank.ShowChangeRankAction">
+			<result>/content/rank/changeRank.jsp</result>
+			<result name="add">/content/rank/addRank.jsp</result>
+		</action>	
+		<action name="changeRank"
+			class="mis.action.rank.ChangeRankAction">
+			<result>/content/rank/ranks.jsp</result>
+			<result name="input">/content/rank/changeError.jsp</result>
+		</action>
+		<action name="addRank"
+			class="mis.action.rank.AddRankAction">
+			<result>/content/rank/ranks.jsp</result>
+			<result name="input">/content/rank/addError.jsp</result>
+		</action>
+		
+<!-- ===========================service======================================================== -->
+		<action name="services"
+			class="mis.action.service.ServicesAction">
+			<result>/content/service/services.jsp</result>
+		</action>
+		<action name="showChangeService"
+			class="mis.action.service.ShowChangeServiceAction">
+			<result>/content/service/changeService.jsp</result>
+			<result name="add">/content/service/addService.jsp</result>
+		</action>
+		<action name="changeService"
+			class="mis.action.service.ChangeServiceAction">
+			<result>/content/service/services.jsp</result>
+			<result name="input">/content/service/changeError.jsp</result>
+		</action>
+		<action name="addService"
+			class="mis.action.service.AddServiceAction">
+			<result>/content/service/services.jsp</result>
+			<result name="input">/content/service/addError.jsp</result>
+		</action>
+		
+<!-- ===========================search======================================================== -->
+		<action name="showSearchByCar">
+			<result>/content/search/searchByCar.jsp</result>
+		</action>
+		<action name="searchByCar"
+			class="mis.action.search.SearchByCarAction">
+			<result>/content/search/searchByCar.jsp</result>
+		</action>
+		<action name="carExpenses1"
+			class="mis.action.search.CarExpensesAction">
+			<result>/content/search/carExpenses.jsp</result>
+		</action>
+		<action name="showSearchByCustomer">
+			<result>/content/search/searchByCustomer.jsp</result>
+		</action>
+		<action name="searchByCustomer"
+			class="mis.action.search.SearchByCustomerAction">
+			<result>/content/search/searchByCustomer.jsp</result>
+		</action>
+		
+		
+					
+	</package>
+</struts>

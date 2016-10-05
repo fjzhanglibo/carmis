@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE validators PUBLIC 
+	"-//Apache Struts//XWork Validator 1.0.3//EN"
+	"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="rank.rankName">
+		<field-validator type="requiredstring">
+			<message>等级名称必填！</message>
+		</field-validator>
+		
+	</field>
+	<field name="rank.rankDiscount">
+		<field-validator type="required">
+			<message>折扣率必填！</message>
+		</field-validator>
+		
+	</field>
+	<field name="rank.rankCost">
+		<field-validator type="required">
+			<message>办卡费用必填！</message>
+		</field-validator>
+	</field>
+</validators>
